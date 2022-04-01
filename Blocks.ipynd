@@ -1,0 +1,29 @@
+import numpy as np
+import os
+import time
+import matplotlib
+import matplotlib.pyplot as mp
+from PIL import Image
+import time
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as om
+import torchvision as tv
+import torch.utils.data as dat
+
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"     # these lines solve a numpy multiple installation conflict
+
+
+if torch.cuda.is_available():     # Make sure GPU is available
+    dev = torch.device("cuda:0")
+    kwar = {'num_workers': 8, 'pin_memory': True}
+    cpu = torch.device("cpu")
+else:
+    print("Warning: CUDA not found, CPU only.")
+    dev = torch.device("cpu")
+    kwar = {}
+    cpu = torch.device("cpu")
+
+np.random.seed(551)
